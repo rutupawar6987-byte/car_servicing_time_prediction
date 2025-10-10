@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car/Machine Service Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #00C9FF, #92FE9D);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+        .logo-text {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .logo-text h1 {
+            font-size: 32px;
+            background: linear-gradient(90deg, #007BFF, #00C6FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        h2 {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: 500;
+            display: block;
+            margin: 15px 0 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        select:focus, input:focus {
+            border-color: #00C6FF;
+            box-shadow: 0 0 8px rgba(0,198,255,0.4);
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 16px;
+            margin-top: 30px;
+            background: linear-gradient(90deg, #00C6FF, #007BFF);
+            border: none;
+            border-radius: 15px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .form-label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            gap: 8px;
+        }
+        i.form-icon {
+            font-size: 20px;
+            background: linear-gradient(90deg, #00C6FF, #007BFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-text">
+            <h1><i class="fa-solid fa-car form-icon"></i> Service Predictor</h1>
+        </div>
+        <h2>Enter Vehicle/Machine Details</h2>
+        <form method="POST" action="/predict">
+
+            <label class="form-label"><i class="fa-solid fa-car form-icon"></i> Vehicle Type:</label>
+            <select name="vehicle_type" required>
+                <option value="Truck">Truck</option>
+                <option value="Car">Car</option>
+                <option value="Van">Van</option>
+            </select>
+
+            <label class="form-label"><i class="fa-solid fa-gauge form-icon"></i> Condition:</label>
+            <select name="condition" required>
+                <option value="Good">Good</option>
+                <option value="Average">Average</option>
+                <option value="Poor">Poor</option>
+            </select>
+
+            <label class="form-label"><i class="fa-solid fa-cogs form-icon"></i> Spare Parts Availability:</label>
+            <select name="spare_avail" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label class="form-label"><i class="fa-solid fa-user-tie form-icon"></i> Staff Experience (years):</label>
+            <input type="number" name="staff_exp" min="0" required>
+
+            <label class="form-label"><i class="fa-solid fa-box form-icon"></i> Spare Parts Type:</label>
+            <select name="parts_type" required>
+                <option value="own">Own</option>
+                <option value="new">New</option>
+            </select>
+
+            <label class="form-label"><i class="fa-solid fa-calendar form-icon"></i> Year of Manufacture:</label>
+            <input type="number" name="year" min="1980" max="2030" required>
+
+            <button type="submit"><i class="fa fa-chart-line"></i> Predict Service Time</button>
+        </form>
+    </div>
+</body>
+</html>
